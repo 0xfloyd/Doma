@@ -9,6 +9,9 @@ if (isset($_SESSION['key'])) {
         $result = mysqli_query($con, "DELETE FROM feedback WHERE id='$id' ") or die('Error');
         header("location:dash.php?q=3");
     }
+    /*
+    you should consider changing the session's key 
+    */
 }
 if (isset($_SESSION['key'])) {
     if (@$_GET['deidquiz'] && $_SESSION['key'] == '54585c506829293a2d4c3b68543b316e2e7a2d277858545a36362e5f39') {
@@ -249,6 +252,9 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
                     }
                 }
             header('location:account.php?q=result&eid=' . $_GET[eid]);
+            /*
+    location may differ 
+    */ 	   		
         }
     } else {
         unset($_SESSION['6e447159425d2d']);
@@ -366,6 +372,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
                 }
             header('location:account.php?q=result&eid=' . $_GET[eid]);
         }
+            /*        check mysql.sql        */
     } else {
         unset($_SESSION['6e447159425d2d']);
         $q = mysqli_query($con, "UPDATE history SET status='finished' WHERE username='$_SESSION[username]' AND eid='$_GET[eid]' ") or die('Error197');
